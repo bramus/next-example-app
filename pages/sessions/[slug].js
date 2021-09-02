@@ -1,11 +1,11 @@
+import SessionDetail from '/components/SessionDetail';
+
 const Session = ({ session }) => {
-    return (
-        <>
-            <h1>{ session.title }</h1>
-            <p>{ session.description }</p>
-            <p>By {session.speaker.name }</p>
-        </>
-    )
+    if (!session) {
+        return null;
+    }
+
+    return <SessionDetail session={session} />;
 };
 
 export async function getStaticProps({ params, preview = false, previewData }) {

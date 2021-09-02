@@ -26,7 +26,7 @@ const Sessions = ({ sessions }) => {
 }
 
 export async function getStaticProps(context) {
-    const res = await fetch(`https://ffconf.org/api/event/2018`);
+    const res = await fetch(`${process.env.API_BASEURL}/event/2018`);
     const sessions = await res.json();
 
     if (!sessions) {

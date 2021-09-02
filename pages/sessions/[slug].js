@@ -9,7 +9,7 @@ const Session = ({ session }) => {
 };
 
 export async function getStaticProps({ params, preview = false, previewData }) {
-    const res = await fetch(`https://ffconf.org/api/session/${params.slug}`);
+    const res = await fetch(`${process.env.API_BASEURL}/session/${params.slug}`);
     const session = await res.json();
 
     return {
@@ -22,7 +22,7 @@ export async function getStaticProps({ params, preview = false, previewData }) {
 
 export async function getStaticPaths() {
     // Get list of sessions here, so that we can prebuild the pages
-    const res = await fetch(`https://ffconf.org/api/event/2018`);
+    const res = await fetch(`${process.env.API_BASEURL}/event/2018`);
     const sessions = await res.json();
 
     return {

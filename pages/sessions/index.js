@@ -1,4 +1,5 @@
-import styles from '../styles/Home.module.css'
+import Link from 'next/link'
+import styles from '../../styles/Home.module.css'
 
 const Sessions = ({ sessions }) => {
     if (!sessions || !sessions.length) {
@@ -12,7 +13,12 @@ const Sessions = ({ sessions }) => {
             <p>Got {sessions.length} Sessions:</p>
             <ul>
                 {sessions.map(session => (
-                    <li key={session.slug}>“{session.title}” by {session.speaker.name}</li>
+                    <li key={session.slug}>
+                        <Link as={`/sessions/${session.slug}`} href="/sessions/[slug]">
+                            <a>“{session.title}”</a>
+                        </Link>
+                        by {session.speaker.name}
+                    </li>
                 ))}
             </ul>
         </div>
